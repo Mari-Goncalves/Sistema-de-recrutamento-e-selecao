@@ -72,4 +72,5 @@ public class DescricaoVaga {
         this.modalidade = modalidade;
     }
 
+    
 }
