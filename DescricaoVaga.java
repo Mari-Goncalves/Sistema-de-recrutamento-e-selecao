@@ -1,13 +1,28 @@
-public class DescricaoVaga {
-    private int id;
-    private String titulo;
-    private String descricao;
-    private String requisito;
-    private String salario;
-    private String cargaHoraria;
-    private String tipoContratacao;
-    private String modalidade;
+public class DescricaoVaga{
+    public int id;
+    public String titulo;
+    public String descricao;
+    public String requisito;
+    public String salario;
+    public String cargaHoraria;
+    public String tipoContratacao;
+    public String modalidade;
+    
+    
+    
+    public DescricaoVaga(int id, String titulo, String descricao, String requisito, String salario, String cargaHoraria, String tipoContratacao, String modalidade){
+        this.id = id;
+        this.titulo = titulo;
+        this.descricao = descricao;
+        this.requisito = requisito;
+        this.salario = salario;
+        this.cargaHoraria = cargaHoraria;
+        this.tipoContratacao = tipoContratacao;
+        this.modalidade = modalidade;
 
+    }
+    
+            
     public int getId() {
         return id;
     }
@@ -72,5 +87,13 @@ public class DescricaoVaga {
         this.modalidade = modalidade;
     }
 
+
+    @Override
+public String toString() {
+       
+        return titulo + " " + salario + " " + modalidade + " " + cargaHoraria + tipoContratacao + modalidade; 
+}
     
+ 
+
 }
