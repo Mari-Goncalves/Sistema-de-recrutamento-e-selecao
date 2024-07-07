@@ -1,78 +1,120 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Vaga{
+
+
+
+
+    private ArrayList<DescricaoVaga> Vaga = new ArrayList<DescricaoVaga>();
+
+
+    public Vaga(){
+      Vaga = new ArrayList<DescricaoVaga>();
+    }
   
-
-    
-    ArrayList<Vaga> vaga = new ArrayList<Vaga>();
-    
-    ArrayList<DescricaoVaga> DescricaoVaga = new ArrayList<DescricaoVaga>();
-    
-    DescricaoVaga descricaoVaga = new DescricaoVaga("id", "titulo", "descricao", "requisito", "salario");
-  
-    int id = descricaoVaga.getId();
-    String titulo = descricaoVaga.getTitulo();
-    String descricao = descricaoVaga.getDescricao();
-    String salario = descricaoVaga.getSalario();
-    String modalidade = descricaoVaga.getModalidade();
-    
-    String requisito = descricaoVaga.getRequisito();
-    String cargaHoraria = descricaoVaga.getCargaHoraria(); 
-    String tipoContratacao = descricaoVaga.getTipoContratacao();
-  
-
-    public String getSalario(){
-        return salario;
-    }
-    public String getDescricao(){
-      return descricao;
-    }
-    public String getModalidade(){
-      return modalidade;
-    }
-    public String getTitulo(){
-        return titulo;
+      public void addVaga(DescricaoVaga vaga){
+        Vaga.add(vaga);
     }
 
-    
-  
-    public Vaga(String titulo, String descricao, String salario, String modalidade){
-      this.titulo = descricaoVaga.getTitulo();
-      this.descricao = descricaoVaga.getDescricao();
-      this.salario = descricaoVaga.getSalario();
-      this.modalidade = descricaoVaga.getModalidade();
-      
-    }
-
-    
-  
-
-   
-  public void displayMenu(){
-    Scanner leitor = Main.getLeitor();
-    
-    int choice = leitor.nextInt();
-    System.out.println("1 - Cadastrar vaga\n2 - Ver Vagas");
-    if(choice == 1){
-      DescricaoVaga.addVaga();
-      
-      DescricaoVaga vaga = new DescricaoVaga(id, titulo, descricao, requisito, salario, cargaHoraria, tipoContratacao, modalidade);
-      
-      
-    }else{
-      DisplayVagas();
-    }
-  }
-    
-
-    public void DisplayVagas(){
-      for (Vaga vaga : this.vaga){
-        System.out.println(vaga.getTitulo() + vaga.getSalario() + vaga.getModalidade() + vaga.getDescricao());
+      public void RemoveVaga(DescricaoVaga vaga){
+        Vaga.remove(vaga);
       }
+  public void DisplayVagas(){
+    System.out.println("1 - Ver todas as vagas\n2 - Procurar Vagas\n__");
+    switch(choice){
+      case 1:    
+    System.out.println("Vagas disponiveis: " + Vaga.size()");
+    for (DescricaoVaga vaga : Vaga){
+      System.out.println("\n("vaga.getId() + ")  " + vaga.getTitulo() + "\nRemuneração: " + vaga.getSalario() + "     Modalidade:  " + vaga.getModalidade() + "\n");
+    }
+      Sysytem.out.println("ID: ");
+        int show = leitor.nextInt();
+        for (DescricaoVaga vaga : Vaga){
+          if(vaga.getId().equals(show)){
+            System.out.println(vaga.getId() + " - " + vaga.getTitulo() + "\n$ " + vaga.getSalario() + "    🏃‍♂️ "  + vaga.getModalidade() + "   ⏱︎ " + vaga.getCargaHoraria() + "\n☝ " + vaga.getRequisito() + "    👥 " + vaga.getTipoContratacao() + "\n" + vaga.getDescricao() + "\n");
+            System.out.println("\nCandidatar-se? \n1 - Sim\n2 - Nao");
+            choice = leitor.nextInt();
+            if(choice == 1){
+              //metodo para enviar curriculo
+            }else{
+              return displayVagas();
+            }
 
-    
-    
-
+          }else{
+            System.out.println("Nenhuma vaga encontrada.");
+            return Search();
+          }
+        
+          
+        case 2:
+          Search();
   }
+    
+
+  public int Search(){
+    Scanner leitor = Main.getLeitor();
+    int choice = leitor.nextInt();
+    System.out.print("Procurar por vaga por...\n1 - Titulo\n2 - Salario\n3 - Modalidade\n__");
+    switch(choice){
+      case 1:
+      String porNome = leitor.nextLine();
+      System.out.println("Titulo: ")
+      for (DescricaoVaga vaga : Vaga){
+        if(vaga.getTitulo().equals(porNome)){
+          System.out.println("\n(" + vaga.getId() + ")  " + vaga.getTitulo() + "\nRemuneração: " + vaga.getSalario() + "     Modalidade:  " + vaga.getModalidade() + "\n");
+          System.out.println("\nCandidatar-se? \n1 - Sim\n2 - Nao");
+          choice = leitor.nextInt();
+          if(choice == 1){
+            //metodo para enviar curriculo
+          }else{
+            return displayVagas();
+          }
+
+
+          
+        }else{
+          System.out.println("Não foi encontrado nenhuma vaga com esse titulo");
+          return Search();
+        }
+      }
+      case 2:
+      String valor = leitor.nextLine();
+      System.out.println("Remuneração desejada: ");
+        for (DescricaoVaga vaga : Vaga){
+          if(vaga.getSalario().equals(valor)){
+            System.out.println("\n(" + vaga.getId() + ")  " + vaga.getTitulo() + "\nRemuneração: " + vaga.getSalario() + "     Modalidade:  " + vaga.getModalidade() + "\n");
+            System.out.println("\nCandidatar-se? \n1 - Sim\n2 - Nao");
+            choice = leitor.nextInt();
+            if(choice == 1){
+              //metodo para enviar curriculo
+            }else{
+              return displayVagas();
+            }
+ 
+          }else{
+            System.out.println("Não foi encontrado nenhuma vaga com esse titulo");
+            return Search();
+          }
+          case 3:
+          String mod = leitor.nextLine();
+          System.out.println("Modalidade: ");
+          for (DescricaoVaga vaga : Vaga){
+            if(vaga.getSalario().equals(mod)){
+              System.out.println("\n(" + vaga.getId() + ")  " + vaga.getTitulo() + "\nRemuneração: " + vaga.getSalario() + "     Modalidade:  " + vaga.getModalidade() + "\n");
+              System.out.println("\nCandidatar-se? \n1 - Sim\n2 - Nao");
+              choice = leitor.nextInt();
+              if(choice == 1){
+                //metodo para enviar curriculo
+              }else{
+                return displayVagas();
+              }
+            }else{
+              System.out.println("Não foi encontrado nenhuma vaga com esse titulo");
+              return Search();
+            }
+         
+        }
+  }    
+    
+    
 }
-  
