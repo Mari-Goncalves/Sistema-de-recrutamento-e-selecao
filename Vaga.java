@@ -21,11 +21,11 @@ public class Vaga{
       }
 
       public int getDisplayVagas(){
-        return DisplayVagas();
+        return displayVagas();
       }
 
   
-  public int DisplayVagas(){
+  public int displayVagas(){
     Scanner leitor = Main.getLeitor();
     int choice = leitor.nextInt();
     System.out.println("1 - Ver todas as vagas\n2 - Procurar Vagas\n__");
@@ -44,9 +44,11 @@ public class Vaga{
             System.out.println("\nCandidatar-se? \n1 - Sim\n2 - Nao");
             choice = leitor.nextInt();
             if(choice == 1){
+                
               //metodo para enviar curriculo
+                
             }else{
-              return DisplayVagas();
+              return displayVagas();
             }
 
           }else{
@@ -74,13 +76,13 @@ public class Vaga{
           System.out.println("\nCandidatar-se? \n1 - Sim\n2 - Nao");
           choice = leitor.nextInt();
           if(choice == 1){
+              
             //metodo para enviar curriculo
+              
           }else{
-            return DisplayVagas();
+            return displayVagas();
           }
-
-
-          
+        
         }else{
           System.out.println("Não foi encontrado nenhuma vaga com esse titulo");
           return Search();
@@ -95,9 +97,11 @@ public class Vaga{
             System.out.println("\nCandidatar-se? \n1 - Sim\n2 - Nao");
             choice = leitor.nextInt();
             if(choice == 1){
+                
               //metodo para enviar curriculo
+                
             }else{
-              return DisplayVagas();
+              return displayVagas();
             }
  
           }else{
@@ -113,9 +117,11 @@ public class Vaga{
               System.out.println("\nCandidatar-se? \n1 - Sim\n2 - Nao");
               choice = leitor.nextInt();
               if(choice == 1){
+                  
                 //metodo para enviar curriculo
+                  
               }else{
-                return DisplayVagas();
+                return displayVagas();
               }
             }else{
               System.out.println("Não foi encontrado nenhuma vaga com esse titulo");
