@@ -1,17 +1,19 @@
-import java.lang.Math;
+mport java.lang.Math;
 import java.util.Scanner;
 
 public class Menu {
   private Vaga rh;
+  Scanner leitor = Main.getLeitor();
   public Menu(Vaga rh){
     this.rh = rh;
     
   }
-
+      
       public void displayMainMenu(){
         boolean sair = false;
         while(!sair){
         System.out.println("Bem vindo ao Vaga Feliz!/n1 - Cadastro candidato/n2 - Cadastro Recrutador        /n3 - Login\n4 - Sair");
+         int choice = leitor.nextInt();
           switch(choice){
             case 1:
               //if candidato, vai para cadastro e upload de curriculo, pós volta para menu abaixo
@@ -30,7 +32,7 @@ public class Menu {
               //if recrutador, vai para cadastro de empresa, e após vai para o menu abaixo
               System.out.println("1 - Gerenciamento de Vagas\n2 - Candidaturas\n3 - Entrevistamento\n 4 - Sair");
 
-              int input = leitor.nextInt();
+              input = leitor.nextInt();
               if(input == 1){
                     displayCDV();
               }else if(input == 2){
@@ -44,14 +46,14 @@ public class Menu {
             case 3:  
               //Login leva para um dos menus. 
             case 4:
-              Sout("*close the app*");
+              System.out.println("*close the app*");
               sair = true;        
           }
         }
         
         
 
-      public void displayCDV(){
+      public DescricaoVaga displayCDV(){
         //CDV = criador de vaga
 
       Scanner leitor = Main.getLeitor();
@@ -77,10 +79,10 @@ public class Menu {
           if(choice == 1){
           //salva vaga em arquivo txt
           rh.addVaga(vaga);
-            return;
+            return vaga;
       }else{
       System.out.println("Vaga excluída.");
-        return;
+        return vaga;
         
         
       }
