@@ -1,4 +1,4 @@
-mport java.lang.Math;
+import java.lang.Math;
 import java.util.Scanner;
 
 public class Menu {
@@ -8,6 +8,7 @@ public class Menu {
     this.rh = rh;
     
   }
+  
       
       public void displayMainMenu(){
         boolean sair = false;
@@ -24,7 +25,7 @@ public class Menu {
               }else if(input == 2){
                 //vai para as candidaturas, se nao tem nenhuma, tela em branco, opção de voltar.
               }if(input == 3){
-                 displayVagas();           
+                rh.displayVagas();          
               }else{
                 sair = true;
               }
@@ -44,7 +45,7 @@ public class Menu {
               }
               
             case 3:  
-              //Login leva para um dos menus. 
+              //Login leva para um dos menus se login estiver correto. 
             case 4:
               System.out.println("*close the app*");
               sair = true;        
@@ -58,7 +59,7 @@ public class Menu {
 
       Scanner leitor = Main.getLeitor();
       int id = (int)(Math.random() * 1000);
-      System.out.println(id);
+      System.out.println("(" + id + ")");
       String titulo = leitor.nextLine();
       System.out.println("Titulo: ");
       String salario = leitor.nextLine();
@@ -91,5 +92,4 @@ public class Menu {
     
     }
   }
-  
   
