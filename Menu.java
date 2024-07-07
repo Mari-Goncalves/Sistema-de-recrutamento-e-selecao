@@ -17,35 +17,49 @@ public class Menu {
          int choice = leitor.nextInt();
           switch(choice){
             case 1:
+              
               //if candidato, vai para cadastro e upload de curriculo, pós volta para menu abaixo
+              
               System.out.println("1 - Ir para entrevistas\n2 - Acompanhe Candidaturas\n3 - Procurar Vagas\n 4 - Sair");
               int input = leitor.nextInt();
               if(input == 1){
+                
                 //vai para entrevista, se não tem nenhuma, tela em branco, opção de voltar.
+                
               }else if(input == 2){
+                
                 //vai para as candidaturas, se nao tem nenhuma, tela em branco, opção de voltar.
+                
               }if(input == 3){
                 rh.displayVagas();          
               }else{
                 sair = true;
               }
             case 2:
+              
               //if recrutador, vai para cadastro de empresa, e após vai para o menu abaixo
+              
               System.out.println("1 - Gerenciamento de Vagas\n2 - Candidaturas\n3 - Entrevistamento\n 4 - Sair");
 
               input = leitor.nextInt();
               if(input == 1){
                     displayCDV();
               }else if(input == 2){
+                
                 //vai para candidaturas, se nao tem nenhuma, tela em branco, opção de voltar.
+                
               }if(input == 3){
+                
                 //vai para entrevistamento, se não tem nenhuma, tela em branco, opção de voltar.
+                
               }else{
                 sair = true;
               }
               
             case 3:  
+              
               //Login leva para um dos menus se login estiver correto. 
+              
             case 4:
               System.out.println("*close the app*");
               sair = true;        
