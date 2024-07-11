@@ -1,5 +1,4 @@
 
-
 import java.util.ArrayList;
 
 public class Notificacao {
@@ -37,7 +36,11 @@ public class Notificacao {
             
                 System.out.println("Você está a um passo de ser contratado!\n");
                 System.out.println("Mantenha-se atento ao agendamento da sua entrevista!");
-                return mn.displayMainMenu();                
+                System.out.println("1 - Voltar ");
+                    int voltar = leitor.nextInt();
+                    if(voltar == 1){
+                        mn.displayMainMenu();
+                    }
                
                 case att.APTO_ENTREVISTA():
                 //if(recrutador){
@@ -45,22 +48,56 @@ public class Notificacao {
                 //else{
                 System.out.println("");
                     
+                    System.out.println("1 - Voltar ");
+                    int voltar = leitor.nextInt();
+                    if(voltar == 1){
+                        mn.displayMainMenu();
+                    }
+                    
                 case att.CONTRATADO():
                 System.out.println("PARABÉNS, VOCÊ FOI CONTRADO/A!");
                 System.out.println("Fique atento as informações da vaga, entre em contato com " + rh.empresa + " pelo email " + rh.email);
+
+                    System.out.println("1 - Voltar ");
+                    int voltar = leitor.nextInt();
+                    if(voltar == 1){
+                        mn.displayMainMenu();
+                    }
                     
                 case att.DESCLASSIFICADO():
                 System.out.println("Poxa, não foi dessa vez. Mas temos uma vaga para você! " + nvg.get(Vaga.size() -1));
+                    
+                    System.out.println("1 - Voltar ");
+                    int voltar = leitor.nextInt();
+                    if(voltar == 1){
+                        mn.displayMainMenu();
+                    }
                 case att.PRIMEIRA_ENTREVISTA():
                 System.out.println("Boa sorte! Sua entrevista foi marcada para " + ent.getData() + "\n"");
                 System.out.println("Aqui vão algumas dicas parra garantir a vaga!"); 
+
+                    System.out.println("1 - Voltar ");
+                    int voltar = leitor.nextInt();
+                    if(voltar == 1){
+                        mn.displayMainMenu();
+                    }
                     
                 case att.ENTREVISTA_TECNICA():
                 System.out.println("O que é uma entrevista técnica? Fique atento aos minimos detalhes para não passar vergonha na hora H");
 
+                    System.out.println("1 - Voltar ");
+                    int voltar = leitor.nextInt();
+                    if(voltar == 1){
+                        mn.displayMainMenu();
+                    }
+
                 case att.ESTA_INSCRITO():
 
-
+                    System.out.println("1 - Voltar ");
+                    int voltar = leitor.nextInt();
+                    if(voltar == 1){
+                        mn.displayMainMenu();
+                    }
 
                 case att.DESISTENCIA():
                     
@@ -72,6 +109,12 @@ public class Notificacao {
                     System.out.println("Hmm... Talvez uma vaga em " + nvg.get(Vaga.size() -1) + " seja melhor para você!");   
                   }
 
+                    System.out.println("1 - Voltar ");
+                    int voltar = leitor.nextInt();
+                    if(voltar == 1){
+                        mn.displayMainMenu();
+                    }
+
                     
                 case att.NAO_APTO_ENTREVISTA():
 
@@ -80,7 +123,11 @@ public class Notificacao {
                           }else{
                         System.out.println("Entrevista não comparecida. Entre em contato com " + rh.empresa + " pelo email " + rh.email);
                           }
-                    
+                    System.out.println("1 - Voltar ");
+                    int voltar = leitor.nextInt();
+                    if(voltar == 1){
+                        mn.displayMainMenu();
+                    }
 
                 case att.getStatus() == null:
 
@@ -103,6 +150,11 @@ public class Notificacao {
                         System.out.println("Boa Sorte! Sua entrevista foi marcada para " + ent.getData() + "\n");
                         
                           }
+                    System.out.println("1 - Voltar ");
+                    int voltar = leitor.nextInt();
+                    if(voltar == 1){
+                        mn.displayMainMenu();
+                    }
                     
                     
 
@@ -133,3 +185,5 @@ public class Notificacao {
 
     
 }
+
+ //dished damned and done, bitch
