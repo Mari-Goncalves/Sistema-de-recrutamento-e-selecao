@@ -1,6 +1,12 @@
+//Gerencia tudo a ver com vagas (a lista de vagas, adc vagas, deletar, editar, procura e mostra todas as vagas)
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Vaga{
+
+  Scanner leitor = Main.getLeitor();
+  private Recrutador rh;
+  private Empresa ugh;
+  private Menu mn;
 
 
 
@@ -23,9 +29,155 @@ public class Vaga{
       public int getDisplayVagas(){
         return displayVagas();
       }
+      public DescricaoVaga getDisplayCDV(){
+        return displayCDV();
+  }
+      public DescricaoVaga getDeletarVaga(){
+        return DeletarVaga();
+  }
+      public DescricaoVaga getEditarVaga(){
+        return EditarVaga();
+  }
+
+
+  protected DescricaoVaga displayCDV(){
+      //CDV = criador de vaga
+
+    Scanner leitor = Main.getLeitor();
+    int id = (int)(Math.random() * 1000);
+    System.out.println("(" + id + ")");
+    String titulo = leitor.nextLine();
+    System.out.println("Titulo: ");
+    String salario = leitor.nextLine();
+    System.out.println("\nSalario: ");
+    String descricao = leitor.nextLine();
+    System.out.println("\nDescricao: ");
+    String requisito = leitor.nextLine();
+    System.out.println("\nRequisitos: ");
+    String cargaHoraria = leitor.nextLine();
+    System.out.println("\nCarga Horaria: ");
+    String tipoContratacao = leitor.nextLine();
+    System.out.println("\nTipo de Contratacao: ");
+    String modalidade = leitor.nextLine();
+    System.out.println("\nModalidade: ");
+    String empresa = ugh.getRazaoSocial();  
+    DescricaoVaga vaga = new DescricaoVaga(id, titulo, descricao, requisito, salario, cargaHoraria, tipoContratacao, modalidade, empresa);
+
+    int choice = leitor.nextInt();
+    System.out.println("Confirmar? \n1 - Sim\n2 - Nao");
+
+        if(choice == 1){
+        //salva vaga em arquivo txt
+        addVaga(vaga);
+          return vaga;
+    }else{
+    System.out.println("Vaga excluída.");
+      return vaga;
+
+
+    }
+
+
+
+  }
+
+
+  protected DescricaoVaga EditarVaga(){
+    int edit = leitor.nextInt();
+
+    System.out.print("\nID da vaga que deseja alterar: ");
+    edit = leitor.nextInt();
+
+
+      for(DescricaoVaga vaga : Vaga){
+      if(vaga.getEmpresa().equals(rh.getEmpresa()) && vaga.getId() == edit){
+        System.out.println(vaga);
+        System.out.println("1 - Editar Titulo\n2 - Editar Salario\n3 - Editar Descricao\n4 - Editar Requisitos\n5 - Editar Carga Horaria\n6 - Editar Tipo de Contratacao\n7 - Editar Modalidade\n8 - Sair");
+        int choice = leitor.nextInt();
+        switch (choice){
+          case 1:
+            System.out.println("Novo Titulo: ");
+            String titulo = leitor.nextLine();
+            vaga.setTitulo(titulo);
+          case 2:
+            System.out.println("Novo Salario: ");
+            String salario = leitor.nextLine();
+            vaga.setSalario(salario);
+          case 3:
+            System.out.println("Nova Descricao: ");
+            String descricao = leitor.nextLine();
+            vaga.setDescricao(descricao);
+          case 4:
+            System.out.println("Novos Requisitos: ");
+            String requisito = leitor.nextLine();
+            vaga.setRequisito(requisito);
+          case 5:
+            System.out.println("Nova Carga Horaria: ");
+            String cargaHoraria = leitor.nextLine();
+            vaga.setCargaHoraria(cargaHoraria);
+          case 6:
+            System.out.println("Novo Tipo de Contratacao: ");
+            String tipoContratacao = leitor.nextLine();
+            vaga.setTipoContratacao(tipoContratacao);
+          case 7:
+            System.out.println("Nova Modalidade: ");
+            String modalidade = leitor.nextLine();
+            vaga.setModalidade(modalidade);
+          case 8:
+            System.out.println("");
+            //volta menu anterio
+        }
+      }else{
+        System.out.println("Vaga não encontrada. Tente novamente.");
+        //retorna menu anterior
+      }
+
+    
+  }
+ 
+  
+
+  protected DescricaoVaga DeletarVaga(){ //ver se esse menu funciona
+    
+        for (DescricaoVaga vaga : Vaga){
+          if(vaga.getEmpresa().equals(rh.getEmpresa())){
+            System.out.println("\n(" + vaga.getId() + ")  " + vaga.getTitulo() + "\n");
+          }
+        
+        System.out.println("Digite a vaga que deseja excluir: ");
+        String t = leitor.nextLine();
+    
+        if(t.equals(vaga.getTitulo())){
+          System.out.println(this.Vaga);
+          System.out.println("Confirmar? \n1 - Sim       2 - Não\n");
+          int conf = leitor.nextInt();
+          
+          switch(conf){
+              
+            case 1:
+            Vaga.remove(vaga);
+            System.out.println("Vaga excluída.");
+            case 2:
+            System.out.println("Retornando ao menu anterior.");
+            mn.getDisplayGerenciador(); 
+          }
+          
+        }else{
+          System.out.println("Vaga não encontrada.");
+          return DeletarVaga();
+
+          }
+        }
+        
+          
+        }
+            
+            
+      
 
   
-  public int displayVagas(){
+  protected int displayVagas(){
+    
     Scanner leitor = Main.getLeitor();
     int choice = leitor.nextInt();
     System.out.println("1 - Ver todas as vagas\n2 - Procurar Vagas\n__");
@@ -35,18 +187,17 @@ public class Vaga{
     for (DescricaoVaga vaga : Vaga){
       System.out.println("\n(" + vaga.getId() + ")  " + vaga.getTitulo() + "\nRemuneração: " + vaga.getSalario() + "     Modalidade:  " + vaga.getModalidade() + "\n");
     }
-      System.out.println("ID: ");
+      System.out.println("Digite a ID da vaga que deseja: ");
         int show = leitor.nextInt();
         for (DescricaoVaga vaga : Vaga){
           
           if(vaga.getId() == show){
-            System.out.println(vaga.getId() + " - " + vaga.getTitulo() + "\n$ " + vaga.getSalario() + "    🏃‍♂️ "  + vaga.getModalidade() + "   ⏱︎ " + vaga.getCargaHoraria() + "\n☝ " + vaga.getRequisito() + "    👥 " + vaga.getTipoContratacao() + "\n" + vaga.getDescricao() + "\n");
+            
+            System.out.println(vaga.getId() + " - " + vaga.getTitulo() + "\n$ " + vaga.getSalario() + "    🏃‍♂️ "  + vaga.getModalidade() + "   ⏱︎ " + vaga.getCargaHoraria() + "\n☝ " + vaga.getRequisito() + "    👥 " + vaga.getTipoContratacao() + "\n" + vaga.getDescricao() + "\nPostado por " + vaga.getEmpresa());
             System.out.println("\nCandidatar-se? \n1 - Sim\n2 - Nao");
             choice = leitor.nextInt();
             if(choice == 1){
-                
               //metodo para enviar curriculo
-                
             }else{
               return displayVagas();
             }
@@ -76,13 +227,13 @@ public class Vaga{
           System.out.println("\nCandidatar-se? \n1 - Sim\n2 - Nao");
           choice = leitor.nextInt();
           if(choice == 1){
-              
             //metodo para enviar curriculo
-              
           }else{
             return displayVagas();
           }
-        
+
+
+          
         }else{
           System.out.println("Não foi encontrado nenhuma vaga com esse titulo");
           return Search();
@@ -97,9 +248,7 @@ public class Vaga{
             System.out.println("\nCandidatar-se? \n1 - Sim\n2 - Nao");
             choice = leitor.nextInt();
             if(choice == 1){
-                
               //metodo para enviar curriculo
-                
             }else{
               return displayVagas();
             }
@@ -117,9 +266,7 @@ public class Vaga{
               System.out.println("\nCandidatar-se? \n1 - Sim\n2 - Nao");
               choice = leitor.nextInt();
               if(choice == 1){
-                  
                 //metodo para enviar curriculo
-                  
               }else{
                 return displayVagas();
               }
