@@ -1,0 +1,132 @@
+//cadastra recrutador junto da empresa, e cadastra candidato.
+import java.util.ArrayList;
+import java.util.Scanner;
+public class Cadastro extends Menu{
+  
+private ArrayList<Candidato> curriculo = new ArrayList<Candidato>();
+private ArrayList<Empresa> comercio = new ArrayList<Empresa>();
+private ArrayList<Recrutador> recrutador = new ArrayList<Recrutador>();
+Scanner leitor = Main.getLeitor();
+  
+
+
+  public void addEmpresa(Empresa empresa){
+      comercio.add(empresa);
+  }
+
+  public void removeEmpresa(Empresa empresa){
+      comercio.remove(empresa);
+  }
+
+  public void addCandidato(Candidato candidato){
+    curriculo.add(candidato);
+  }
+
+  public void RemoveCandidato(Candidato candidato){
+    curriculo.remove(candidato);
+  }
+
+  public void addRecrutador(Recrutador recrutador){
+
+    this.recrutador.add(recrutador);
+    
+  }
+
+  public void removerRecrutador(Recrutador recrutador){
+    this.recrutador.remove(recrutador);
+  }
+  
+
+
+  protected void CadastroCND(){
+
+  boolean cadastrar = false;
+  do{
+  System.out.println("CADASTRO CANDIDATO\n");
+  int id = (int)(Math.random() * 1000);
+  System.out.println("Nome: ");
+  String nome = leitor.nextLine();
+  System.out.println("Email: ");
+  String email = leitor.nextLine();
+  System.out.println("Senha: ");
+  int senha = leitor.nextInt();
+  System.out.println("Nivel de escolaridade: ");
+  String nivelEscolaridade = leitor.nextLine();
+  System.out.println("Formação: ");
+  String formacao = leitor.nextLine();
+  System.out.println("Objetivos: ");
+  String objetivos = leitor.nextLine();
+  System.out.println("Habilidades: ");
+  String habilidades = leitor.nextLine();
+  System.out.println("Experiencia: ");
+  String experiencia = leitor.nextLine();
+  System.out.println("Cursos: ");
+  String cursos = leitor.nextLine();
+  Candidato curriculo = new Candidato(id, senha, nome, email, formacao, nivelEscolaridade, objetivos, habilidades, experiencia, cursos);
+  System.out.println(curriculo);
+  System.out.println("\nDeseja Salvar?\n1 - Sim\n2 - Não\n3 - Voltar");
+    int salvar = leitor.nextInt();
+    if(salvar == 1){
+      cadastrar = true;
+      //metodo salvar
+      addCandidato(curriculo);
+      MenuCandidato();
+    }else if(salvar == 2){
+      cadastrar = false;
+    }else{
+      mn.displayMainMenu();
+    } 
+
+  } while(cadastrar = false);
+    
+}
+  
+  
+ 
+  protected void CadastroRH(){
+    boolean cadastrar = false;
+    do{
+
+    
+  System.out.println("\nCADASTRO EMPRESA\n");
+  System.out.println("Razão Social: ");
+  String razaoSocial = leitor.nextLine();
+  System.out.println("CNPJ: ");
+  String cnpj = leitor.nextLine();
+  System.out.println("Endereço: ");
+  String endereco = leitor.nextLine();
+  System.out.println("Email Corporativo: ");
+  String emailCorporativo = leitor.nextLine();
+  Empresa comercio = new Empresa(razaoSocial, cnpj, endereco, emailCorporativo);
+
+  System.out.println("CADASTRO RECRUTADOR\n");
+  int id = (int)(Math.random() * 1000);
+  System.out.println("Nome: ");
+  String nome = leitor.nextLine();
+  System.out.println("Senha: ");
+  int senha = leitor.nextInt();
+  System.out.println("Cargo: ");
+  String cargo = leitor.nextLine();
+  String empresa = comercio.getRazaoSocial();
+
+  Recrutador recrutador = new Recrutador(nome, id, senha, cargo, empresa);
+  System.out.println(recrutador);
+  System.out.println("\nDeseja Salvar?\n1 - Sim\n2 - Não\n3 - Voltar");
+  int choice = leitor.nextInt();
+      if(choice == 1){
+        //metodo salvar
+        addEmpresa(comercio);
+        addRecrutador(recrutador);
+        MenuRecrutador();
+        
+      }else if(choice == 2){
+        cadastrar = false;
+      }else{
+        mn.displayMainMenu();
+      }
+    
+  }while (cadastrar = false);
+
+
+      
+}
