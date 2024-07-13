@@ -122,7 +122,7 @@ Scanner leitor = Main.getLeitor();
       }else if(choice == 2){
         cadastrar = false;
       }else{
-        mn.displayMainMenu();
+        displayMainMenu();
       }
     
   }while (cadastrar = false);
