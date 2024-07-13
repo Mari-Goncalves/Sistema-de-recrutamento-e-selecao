@@ -74,7 +74,7 @@ Scanner leitor = Main.getLeitor();
     }else if(salvar == 2){
       cadastrar = false;
     }else{
-      mn.displayMainMenu();
+      displayMainMenu();
     } 
 
   } while(cadastrar = false);
@@ -98,6 +98,7 @@ Scanner leitor = Main.getLeitor();
   System.out.println("Email Corporativo: ");
   String emailCorporativo = leitor.nextLine();
   Empresa comercio = new Empresa(razaoSocial, cnpj, endereco, emailCorporativo);
+      System.out.println(comercio);
 
   System.out.println("CADASTRO RECRUTADOR\n");
   int id = (int)(Math.random() * 1000);
