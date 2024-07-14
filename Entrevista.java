@@ -1,50 +1,57 @@
+import java.util.Scanner;
+
 public class Entrevista {
+
+    Scanner leitor = Main.getLeitor();
    
     private String horario;
     
     private String data;
     
-    private Candidato candidato;
-   
     private Recrutador recrutador;
+
+    public Entrevista(){
+
+
+    }
+
     
-    public Entrevista (Candidato candidato, Recrutador recrutador, String horario, String data){
-        this.candidato = candidato;
-        this.recrutador = recrutador;
-        this.horario = horario;
-        this.data = data;
-    
-    }
+    public static void agendar() {
+        Scanner leitor = Main.getLeitor();
 
-    public String getHorario() {
-        return horario;
-    }
 
-    public void setHorario(String horario) {
-        this.horario = horario;
-    }
-   
-    public String getData() {
-        return data;
-    }
+            while (true) {            
 
-    public void setData(String data) {
-        this.data = data;
-    }
+            System.out.print("##--Teste Estrutura de Menu--##\n\n");
+            System.out.print("|----------------------------------|\n");
+            System.out.print("| Opção 1 - Agendar entrevista     |\n");
+            System.out.print("| Opção 2 - Sair                   |\n");
+            System.out.print("|----------------------------------|\n");
+            System.out.print("Digite uma opção: ");
 
-    public Candidato getCandidato() {
-        return candidato;
-    }
+            int opcao = leitor.nextInt();
 
-    public void setCandidato(Candidato candidato) {
-        this.candidato = candidato;
+            if (opcao == 2) {
+                System.out.print("\nAté logo!");
+                leitor.close(); 
+            }
+
+            switch (opcao) {
+            case 1:
+                System.out.print("\nOpção Novo Cadastro Selecionado");
+                break;
+
+            default:
+                System.out.print("\nOpção Inválida!");
+                break;
+        }
+       
+        }
     }
  
-    public Recrutador getRecrutador() {
-        return recrutador;
-    }
 
-    public void setRecrutador(Recrutador recrutador) {
-        this.recrutador = recrutador;
-    }
+
+
+    
+
 }
