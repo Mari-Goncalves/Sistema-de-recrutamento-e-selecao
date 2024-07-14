@@ -1,4 +1,3 @@
-//cadastra recrutador junto da empresa, e cadastra candidato.
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Cadastro extends Menu{
@@ -9,7 +8,7 @@ private ArrayList<Recrutador> recrutador = new ArrayList<Recrutador>();
 Scanner leitor = Main.getLeitor();
   
 
-
+  //adiciona e remove empresa a lista de array list
   public void addEmpresa(Empresa empresa){
       comercio.add(empresa);
   }
@@ -18,6 +17,8 @@ Scanner leitor = Main.getLeitor();
       comercio.remove(empresa);
   }
 
+  // adiciona e remove candidato a lista de array list
+
   public void addCandidato(Candidato candidato){
     curriculo.add(candidato);
   }
@@ -25,6 +26,8 @@ Scanner leitor = Main.getLeitor();
   public void RemoveCandidato(Candidato candidato){
     curriculo.remove(candidato);
   }
+
+  //adiciona e remove recrutador a lista de array list
 
   public void addRecrutador(Recrutador recrutador){
 
@@ -35,9 +38,11 @@ Scanner leitor = Main.getLeitor();
   public void removerRecrutador(Recrutador recrutador){
     this.recrutador.remove(recrutador);
   }
+
+  // a lista de array list, como na vaga, é feita no local aonde as informações serão editadas, acrescentadas etc. Como esta classe acrescenta um cadastro (um metodo geral para adicionar recrutadores, candidatos e empresas nas listas, ja que nao existe menus para isso no codigo atual)
   
 
-
+  // cadastroo de candidato, pega as informações inseridas por input do usuario e adiciona nas variaveis definidas no construtor na classe Candidadto. Feito em formato de Menu para poder ser inserido na estrutura do menu de principal.
   protected void CadastroCND(){
 
   boolean cadastrar = false;
@@ -67,12 +72,15 @@ Scanner leitor = Main.getLeitor();
   System.out.println("\nDeseja Salvar?\n1 - Sim\n2 - Não\n3 - Voltar");
     int salvar = leitor.nextInt();
     if(salvar == 1){
-      cadastrar = true;
       //metodo salvar
+      //adiciona candidato a lista
       addCandidato(curriculo);
+      cadastrar = true;
+      // termina o looping e leva ao menu do candidato abaixo      
       MenuCandidato();
     }else if(salvar == 2){
       cadastrar = false;
+      //repete o looping
     }else{
       displayMainMenu();
     } 
@@ -82,12 +90,13 @@ Scanner leitor = Main.getLeitor();
 }
   
   
- 
+  // cadastroo de recrutador/empresa, pega as informações inseridas por input do usuario e adiciona nas variaveis definidas no construtor na classe Recrutador E Empresa. Feito em formato de Menu para poder ser inserido na estrutura do menu de principal.
   protected void CadastroRH(){
     boolean cadastrar = false;
+   // do while para repetir o cadastro enquanto o usuario são salvar o perfil.
     do{
 
-    
+  //cadastro empresa primeiro  
   System.out.println("\nCADASTRO EMPRESA\n");
   System.out.println("Razão Social: ");
   String razaoSocial = leitor.nextLine();
@@ -98,8 +107,10 @@ Scanner leitor = Main.getLeitor();
   System.out.println("Email Corporativo: ");
   String emailCorporativo = leitor.nextLine();
   Empresa comercio = new Empresa(razaoSocial, cnpj, endereco, emailCorporativo);
-      System.out.println(comercio);
+  System.out.println(comercio);
 
+      // imprimi o comercio com suas informações para o usuario ver se esta tudo certo
+//cadastro de recrutador por ultimo
   System.out.println("CADASTRO RECRUTADOR\n");
   int id = (int)(Math.random() * 1000);
   System.out.println("Nome: ");
@@ -109,24 +120,31 @@ Scanner leitor = Main.getLeitor();
   System.out.println("Cargo: ");
   String cargo = leitor.nextLine();
   String empresa = comercio.getRazaoSocial();
-
+      //pega o nome da empresa acima.
   Recrutador recrutador = new Recrutador(nome, id, senha, cargo, empresa);
   System.out.println(recrutador);
+      //imprimi recrutador para checagem
   System.out.println("\nDeseja Salvar?\n1 - Sim\n2 - Não\n3 - Voltar");
   int choice = leitor.nextInt();
       if(choice == 1){
         //metodo salvar
+        //adiciona recrutador a lista de recrutador e empresa a lista de empresa
         addEmpresa(comercio);
         addRecrutador(recrutador);
+        cadastrar = true;
+        // termina o looping para partir pro menu de recrutador
         MenuRecrutador();
-        
+                
       }else if(choice == 2){
+        //repete o looping
         cadastrar = false;
       }else{
+        //volta para o menu inicial (que pergunta sobre cadastro e login)
         displayMainMenu();
       }
     
   }while (cadastrar = false);
+  }
 
 
       
