@@ -4,8 +4,8 @@ public class Main {
   public static final Scanner leitor = new Scanner(System.in);
   public void main(String[] args) {
         
-    Vaga rh = new Vaga();
-    Menu menu = new Menu(rh);
+    
+    Menu menu = new Menu();
     menu.displayMainMenu();
   }
   public static Scanner getLeitor(){
