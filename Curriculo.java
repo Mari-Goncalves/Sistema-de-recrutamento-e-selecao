@@ -42,11 +42,21 @@ public class Curriculo {
 
     // Getters e setters
     // Acessar e modificar os atributos por meio deles
-    public String getNivelEscolaridade() { return nivelEscolaridade; }
-    public void setNivelEscolaridade(String nivelEscolaridade) { this.nivelEscolaridade = nivelEscolaridade; }
+    public String getNivelEscolaridade() { 
+        return nivelEscolaridade; 
+    }
+    
+    public void setNivelEscolaridade(String nivelEscolaridade) { 
+        this.nivelEscolaridade = nivelEscolaridade; 
+    }
 
-    public String getObjetivos() { return objetivos; }
-    public void setObjetivos(String objetivos) { this.objetivos = objetivos; }
+    public String getObjetivos() { 
+        return objetivos; 
+    }
+    
+    public void setObjetivos(String objetivos) { 
+        this.objetivos = objetivos; 
+    }
 
     public String getHabilidades() { return habilidades; }
     public void setHabilidades(String habilidades) { this.habilidades = habilidades; }
