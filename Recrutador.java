@@ -2,10 +2,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Recrutador {
-    // Atributos privados da classe Recrutador
-    private String cargo; // Cargo do recrutador
-    private String endereco; // Endereço do recrutador
-    private String nome; // Nome do recrutador
+    private String cargo; 
+    private String endereco;
+    private String nome; 
 
     // Lista de candidatos para armazenar os currículos
     private List<Curriculo> candidatos;
@@ -44,8 +43,7 @@ public class Recrutador {
         }
     }
 
-    // Getters e setters (opcionais)
-    // Permitem acessar e modificar os atributos privados de forma controlada
+    // Getters e setters 
     public String getCargo() { return cargo; }
     public void setCargo(String cargo) { this.cargo = cargo; }
 
