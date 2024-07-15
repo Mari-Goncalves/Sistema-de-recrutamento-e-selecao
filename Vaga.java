@@ -37,19 +37,19 @@ public class Vaga{
 
 
     
-      public DescricaoVaga getDisplayCDV(){
-        return displayCDV();
+      public void getDisplayCDV(){
+        displayCDV();
   }
-      public DescricaoVaga getDeletarVaga(){
-        return DeletarVaga();
+      public void getDeletarVaga(){
+        DeletarVaga();
   }
-      public DescricaoVaga getEditarVaga(){
-        return EditarVaga();
+      public void getEditarVaga(){
+        EditarVaga();
   }
 
  
 
-  protected DescricaoVaga displayCDV(){
+  protected void displayCDV(){
       //CDV = criador de vaga
 
     Scanner leitor = Main.getLeitor();
@@ -78,10 +78,10 @@ public class Vaga{
         if(choice == 1){
         //salva vaga em arquivo txt
         addVaga(vaga);
-          return vaga;
+          Vagas();
     }else{
     System.out.println("Vaga excluída.");
-      return vaga;
+      Vagas();
 
 
     }
@@ -91,7 +91,7 @@ public class Vaga{
   }
 
 
-  protected DescricaoVaga EditarVaga(){
+  protected void EditarVaga(){
     int edit = leitor.nextInt();
 
     System.out.print("\nID da vaga que deseja alterar: ");
@@ -133,20 +133,20 @@ public class Vaga{
             String modalidade = leitor.nextLine();
             vaga.setModalidade(modalidade);
           case 8:
-            System.out.println("");
-            //volta menu anterio
+            mn.MainMenu();
         }
       }else{
         System.out.println("Vaga não encontrada. Tente novamente.");
-        //retorna menu anterior
+        mn.MainMenu();
       }
 
     
-  }
+      }
+      }
  
   
 
-  protected DescricaoVaga DeletarVaga(){ //ver se esse menu funciona
+  protected void DeletarVaga(){
     
         for (DescricaoVaga vaga : Vaga){
           if(vaga.getEmpresa().equals(rh.getEmpresa())){
@@ -173,7 +173,7 @@ public class Vaga{
           
         }else{
           System.out.println("Vaga não encontrada.");
-          return DeletarVaga();
+          DeletarVaga();
 
           }
         }
@@ -185,7 +185,7 @@ public class Vaga{
       
 
   
-  protected int Vagas(){
+  protected void Vagas(){
     
     Scanner leitor = Main.getLeitor();
     int choice = leitor.nextInt();
@@ -216,14 +216,16 @@ public class Vaga{
             System.out.println("Nenhuma vaga encontrada.");
             Search();
           }
+        }
         
           
         case 2:
           Search();
+    }
   }
     
 
-  public int Search(){
+  public void Search(){
     Scanner leitor = Main.getLeitor();
     int choice = leitor.nextInt();
     System.out.print("Procurar por vaga por...\n1 - Titulo\n2 - Salario\n3 - Modalidade\n__");
@@ -267,6 +269,7 @@ public class Vaga{
             System.out.println("Não foi encontrado nenhuma vaga com esse titulo");
             Search();
           }
+        }
           case 3:
           String mod = leitor.nextLine();
           System.out.println("Modalidade: ");
@@ -284,9 +287,11 @@ public class Vaga{
               System.out.println("Não foi encontrado nenhuma vaga com esse titulo");
               Search();
             }
-         
+          
         }
+       
   }    
     
-    
+ 
 }
+  }
