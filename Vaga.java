@@ -7,16 +7,17 @@ public class Vaga{
   private Recrutador rh;
   private Empresa ugh;
   private Menu mn;
+  private Candidatura cand;
+ 
 
+  
 
 
 
     private ArrayList<DescricaoVaga> Vaga = new ArrayList<DescricaoVaga>();
+    
 
 
-    public Vaga(){
-      Vaga = new ArrayList<DescricaoVaga>();
-    }
   
       public void addVaga(DescricaoVaga vaga){
         Vaga.add(vaga);
@@ -26,9 +27,16 @@ public class Vaga{
         Vaga.remove(vaga);
       }
 
-      public int getDisplayVagas(){
-        return displayVagas();
-      }
+  public int getSize(){
+    return Vaga.size();    
+  }
+
+  public DescricaoVaga getNovaVaga(){
+  return Vaga.get(Vaga.size() - 1);
+  }
+
+
+    
       public DescricaoVaga getDisplayCDV(){
         return displayCDV();
   }
@@ -39,6 +47,7 @@ public class Vaga{
         return EditarVaga();
   }
 
+ 
 
   protected DescricaoVaga displayCDV(){
       //CDV = criador de vaga
@@ -176,7 +185,7 @@ public class Vaga{
       
 
   
-  protected int displayVagas(){
+  protected int Vagas(){
     
     Scanner leitor = Main.getLeitor();
     int choice = leitor.nextInt();
@@ -187,7 +196,7 @@ public class Vaga{
     for (DescricaoVaga vaga : Vaga){
       System.out.println("\n(" + vaga.getId() + ")  " + vaga.getTitulo() + "\nRemuneração: " + vaga.getSalario() + "     Modalidade:  " + vaga.getModalidade() + "\n");
     }
-      System.out.println("Digite a ID da vaga que deseja: ");
+      System.out.println("Digite a ID da vaga que deseja visualizar: ");
         int show = leitor.nextInt();
         for (DescricaoVaga vaga : Vaga){
           
@@ -197,14 +206,15 @@ public class Vaga{
             System.out.println("\nCandidatar-se? \n1 - Sim\n2 - Nao");
             choice = leitor.nextInt();
             if(choice == 1){
-              //metodo para enviar curriculo
+              cand.Candidatacao();
+              System.out.println();
             }else{
-              return displayVagas();
+              Vagas();
             }
 
           }else{
             System.out.println("Nenhuma vaga encontrada.");
-            return Search();
+            Search();
           }
         
           
@@ -229,14 +239,14 @@ public class Vaga{
           if(choice == 1){
             //metodo para enviar curriculo
           }else{
-            return displayVagas();
+            Vagas();
           }
 
 
           
         }else{
           System.out.println("Não foi encontrado nenhuma vaga com esse titulo");
-          return Search();
+          Search();
         }
       }
       case 2:
@@ -250,12 +260,12 @@ public class Vaga{
             if(choice == 1){
               //metodo para enviar curriculo
             }else{
-              return displayVagas();
+              Vagas();
             }
  
           }else{
             System.out.println("Não foi encontrado nenhuma vaga com esse titulo");
-            return Search();
+            Search();
           }
           case 3:
           String mod = leitor.nextLine();
@@ -268,11 +278,11 @@ public class Vaga{
               if(choice == 1){
                 //metodo para enviar curriculo
               }else{
-                return displayVagas();
+                Vagas();
               }
             }else{
               System.out.println("Não foi encontrado nenhuma vaga com esse titulo");
-              return Search();
+              Search();
             }
          
         }
