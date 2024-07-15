@@ -1,18 +1,17 @@
 import java.util.Scanner;
 
-public class Menu {
+public class Menu extends Main{
   private Vaga vg;
   private Notificacao ntf;
   private Empresa ugh;
   private Cadastro cad;
-  private Recrutador rh;
   private Login log;
   private Candidatura cand;
   Scanner leitor = Main.getLeitor();
   boolean sair = false;
   
       
-      public void displayMainMenu(){
+      public void MainMenu(){
         
         while(!sair){
         System.out.println("Bem vindo ao Vaga Feliz!/n1 - Cadastro candidato/n2 - Cadastro Recrutador/n3 - Login\n4 - Sair");
@@ -30,6 +29,8 @@ public class Menu {
               sair = true;        
           }
         }
+
+      }
 
         //visualizar perfil
 
@@ -56,7 +57,7 @@ public class Menu {
         
       }
 
-      protected void MenuRecrutador(){
+      public void MenuRecrutador(){
 
       System.out.println("1 - Gerenciamento de Vagas\n2 - Candidaturas\n3 - Entrevistamento\n4 - Notificações \n5 - Perfil da  Empresa\n6 - Sair\n__");
         int input = leitor.nextInt();
@@ -69,7 +70,7 @@ public class Menu {
             cand.Candidaturas();
             break;
           case 3:
-          vg.displayVagas();
+          vg.Vagas();
             break;
           case 4: 
           ntf.NotificacoesRh();
@@ -138,4 +139,3 @@ public class Menu {
   }
   
   
-
