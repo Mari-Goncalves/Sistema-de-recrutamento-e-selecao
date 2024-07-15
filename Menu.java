@@ -1,17 +1,15 @@
-import java.lang.Math;
 import java.util.Scanner;
 
 public class Menu {
   private Vaga vg;
   private Notificacao ntf;
   private Empresa ugh;
+  private Cadastro cad;
+  private Recrutador rh;
+  private Login log;
+  private Candidatura cand;
   Scanner leitor = Main.getLeitor();
   boolean sair = false;
-  
-  //public Menu(Vaga rh){
-    //this.rh = rh;
-
-  //}
   
       
       public void displayMainMenu(){
@@ -21,13 +19,11 @@ public class Menu {
          int choice = leitor.nextInt();
           switch(choice){
             case 1:
-              //candidato, vai para cadastro e upload de curriculo, pós volta para menu abaixo
-              MenuCandidato();
+              cad.CadastroCND();
             case 2:
-              //if recrutador, vai para cadastro de empresa, e após vai para o menu abaixo
-              MenuRecrutador();
+              cad.CadastroRH();
             case 3: 
-              //metodo do login
+              log.login();
               //Login leva para um dos menus. 
             case 4:
               System.out.println("*close the app*");
@@ -35,22 +31,9 @@ public class Menu {
           }
         }
 
+        //visualizar perfil
 
 
-
-      private void CadastramentoCandidato(){
-
-        //metodo de login
-        // id e senha percorrem ambas listas, se id e senha match com algum dos logins do sistema (array list), ele entra
-        //se o login e senha estiverem na lista de candidatos, menu de candidato. E vice versa
-        
-      }
-
-      private void CadastramentoRecrutador(){
-        
-        //metodo login acima
-        
-      }
 
       public void MenuCandidato(){
 
@@ -62,9 +45,9 @@ public class Menu {
           case 2:
           //vai para as candidaturas, se nao tem nenhuma, tela em branco, opção de voltar.
           case 3:
-          vg.displayVagas();          
+          vg.Vagas();          
           case 4: 
-          ntf.displayNotificacoes();
+          ntf.NotificacoesCnd();
           case 5:
             System.out.println("Fechando aplicativo...");
             sair = true;
@@ -73,9 +56,9 @@ public class Menu {
         
       }
 
-      private void MenuRecrutador(){
+      protected void MenuRecrutador(){
 
-      System.out.println("1 - Gerenciamento de Vagas\n2 - Candidaturas\n3 - Entrevistamento\n4 - Notificações \n5 - Sair");
+      System.out.println("1 - Gerenciamento de Vagas\n2 - Candidaturas\n3 - Entrevistamento\n4 - Notificações \n5 - Perfil da  Empresa\n6 - Sair\n__");
         int input = leitor.nextInt();
         switch(input){
           case 1:
@@ -83,26 +66,40 @@ public class Menu {
             //gerenciamento de vagas vai para adicionar ou excluir vagas.
             break;
           case 2:
-            System.out.println("a");
-          //vai para as candidaturas, se nao tem nenhuma, tela em branco, opção de voltar.
+            cand.Candidaturas();
             break;
           case 3:
           vg.displayVagas();
             break;
           case 4: 
-          ntf.displayNotificacoes();
+          ntf.NotificacoesRh();
             break;
-          case 5:
-            System.out.println("Fechando aplicativo...");
+          case 5: 
+            ugh.toString();
+            //opção editar perfil
+          case 6:
+            System.out.println("Login off...");
             sair = true;
             break;
           default:
             System.out.println("Opção inválida. Tente novamente.\n");
             MenuRecrutador();
+            break;
 
         }
         
       }
+
+
+
+
+
+
+
+
+
+
+        
       public void displayGerenciador(){
         
         System.out.println("_GERENCIADOR DE VAGAS_\n1 - Adicionar Vaga\n2 - Excluir Vaga\n3 - Editar Vaga\n4 - Voltar");
@@ -142,4 +139,3 @@ public class Menu {
   
   
 
-  
