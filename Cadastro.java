@@ -80,7 +80,7 @@ Scanner leitor = Main.getLeitor();
       cadastrar = true;
       //repete o looping
     }else{
-      displayMainMenu();
+      MainMenu();
     } 
 
   } while(cadastrar = false);
@@ -138,7 +138,7 @@ Scanner leitor = Main.getLeitor();
         cadastrar = false;
       }else{
         //volta para o menu inicial (que pergunta sobre cadastro e login)
-        displayMainMenu();
+        MainMenu();
       }
     
   }while (cadastrar = false);
