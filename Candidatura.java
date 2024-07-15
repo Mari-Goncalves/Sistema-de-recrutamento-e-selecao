@@ -43,10 +43,9 @@ public class Candidatura{
               return pretendente.get(pretendente.size() - 1);
           }
       }
-  }
 
 
-public Candidatura Candidatacao(){
+public void Candidatacao(){
   //printa o curriculo, pergunta se quer editar algo, leva pro menu de edicao
   //se aceita, adiciona uma candidatura como abaixo
   int id = cnd.getId();
@@ -56,7 +55,7 @@ public Candidatura Candidatacao(){
   String vaga = dvg.getTitulo();
   Candidatura candidatura = new Candidatura(id, nome, email, curriculo, vaga);
   addCandidatura(candidatura);
-  System.out.println("Inscrito para a " + vaga);
+  System.out.println("Inscrito para a " + this.vaga);
     att.ESTA_INSCRITO();
   
   
